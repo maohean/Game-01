@@ -1,0 +1,54 @@
+{
+  "recipes": [
+    {
+      "id": "craft_campfire",
+      "hotkey": "Z",
+      "label": "Build Campfire",
+      "description": "2 Wood + 1 Stone -> Warmth (+6 HP/s) & Cooking",
+      "requiresCampfire": false,
+      "deployCampfire": true,
+      "ingredients": [
+        { "itemId": "res_wood", "count": 2 },
+        { "itemId": "res_stone", "count": 1 }
+      ],
+      "output": null
+    },
+    {
+      "id": "craft_cook_food",
+      "hotkey": "X",
+      "label": "Cook Meal (Near Fire)",
+      "description": "1 Raw Food -> +60 Hunger & +20 HP",
+      "requiresCampfire": true,
+      "deployCampfire": false,
+      "ingredients": [
+        { "itemId": "food_raw", "count": 1 }
+      ],
+      "output": { "itemId": "food_cooked", "count": 1 }
+    },
+    {
+      "id": "craft_poultice",
+      "hotkey": "C",
+      "label": "Craft Herb Salve",
+      "description": "2 Bamboo/Ash -> +35 HP Healing Bundle",
+      "requiresCampfire": false,
+      "deployCampfire": false,
+      "ingredients": [
+        { "itemId": "res_bamboo", "count": 2 }
+      ],
+      "output": { "itemId": "heal_small", "count": 1 }
+    },
+    {
+      "id": "craft_forge_blade",
+      "hotkey": "V",
+      "label": "Forge Tier-2 Blade",
+      "description": "2 Iron + 1 Stone -> Permanent +14 Slash DMG",
+      "requiresCampfire": false,
+      "deployCampfire": false,
+      "ingredients": [
+        { "itemId": "res_iron", "count": 2 },
+        { "itemId": "res_stone", "count": 1 }
+      ],
+      "output": { "itemId": "weapon_forged", "count": 1 }
+    }
+  ]
+}

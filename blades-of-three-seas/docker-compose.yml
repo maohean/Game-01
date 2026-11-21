@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bots_postgres
+    environment:
+      POSTGRES_USER: bots_user
+      POSTGRES_PASSWORD: bots_password
+      POSTGRES_DB: blades_of_three_seas
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

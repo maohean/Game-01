@@ -1,0 +1,71 @@
+{
+  "connections": {
+    "woodenBridge": {
+      "id": "conn_wooden_bridge",
+      "name": "Borderland Wooden Bridge",
+      "x": 1536,
+      "y": 576,
+      "width": 144,
+      "height": 96
+    },
+    "harborRoutes": [
+      {
+        "id": "route_harbor_lighthouse",
+        "label": "Harbor -> Lighthouse Isle",
+        "from": { "x": 3040, "y": 576 },
+        "to": { "x": 3440, "y": 280 }
+      },
+      {
+        "id": "route_harbor_shipwreck",
+        "label": "Harbor -> Sunken Galleon",
+        "from": { "x": 3040, "y": 576 },
+        "to": { "x": 3680, "y": 860 }
+      },
+      {
+        "id": "route_lighthouse_pirate",
+        "label": "Lighthouse -> Pirate Fort",
+        "from": { "x": 3440, "y": 280 },
+        "to": { "x": 4120, "y": 320 }
+      },
+      {
+        "id": "route_pirate_dragon",
+        "label": "Pirate Fort -> Sea Dragon Trench",
+        "from": { "x": 4120, "y": 320 },
+        "to": { "x": 4360, "y": 840 }
+      }
+    ]
+  },
+  "pois": [
+    { "id": "eu_oak_forest", "region": "europe", "kind": "oak_forest", "name": "Elder Oak Forest", "x": 1760, "y": 320, "radius": 130 },
+    { "id": "eu_village", "region": "europe", "kind": "medieval_village", "name": "Oakhaven Village", "x": 2040, "y": 560, "radius": 110 },
+    { "id": "eu_windmill", "region": "europe", "kind": "windmill", "name": "Grain Windmill", "x": 1920, "y": 840, "radius": 75 },
+    { "id": "eu_inn", "region": "europe", "kind": "inn", "name": "Golden Boar Inn (5g Rest)", "x": 2120, "y": 470, "radius": 68 },
+    { "id": "eu_church", "region": "europe", "kind": "church", "name": "Sanctuary Church (Heal/Revive)", "x": 2140, "y": 660, "radius": 76 },
+    { "id": "eu_castle", "region": "europe", "kind": "stone_castle", "name": "Highwall Stone Castle", "x": 2620, "y": 576, "radius": 150, "hasDrawbridge": true, "gateMaxHp": 300 },
+    { "id": "eu_dungeon", "region": "europe", "kind": "dungeon", "name": "Castle Crypt Dungeon", "x": 2720, "y": 576, "radius": 64 },
+
+    { "id": "sea_harbor", "region": "sea", "kind": "harbor", "name": "Three Seas Harbor", "x": 3030, "y": 576, "radius": 95 },
+    { "id": "sea_lighthouse", "region": "sea", "kind": "lighthouse", "name": "Beacon Lighthouse", "x": 3440, "y": 280, "radius": 80 },
+    { "id": "sea_shipwreck", "region": "sea", "kind": "shipwreck", "name": "Sunken Treasure Galleon", "x": 3680, "y": 860, "radius": 85 },
+    { "id": "sea_pirate_fort", "region": "sea", "kind": "pirate_fort", "name": "Blackwater Pirate Fort", "x": 4120, "y": 320, "radius": 115 },
+    { "id": "sea_dragon_lair", "region": "sea", "kind": "sea_dragon_lair", "name": "Abyssal Dragon Trench", "x": 4360, "y": 840, "radius": 120 }
+  ],
+  "siegeSpawns": [
+    { "id": "siege_ram_1", "kind": "battering_ram", "x": 2360, "y": 520 },
+    { "id": "siege_ballista_1", "kind": "ballista", "x": 2360, "y": 640 }
+  ],
+  "boatSpawns": [
+    { "id": "boat_skiff_1", "kind": "rowboat", "x": 3110, "y": 520 },
+    { "id": "boat_skiff_2", "kind": "rowboat", "x": 3110, "y": 630 },
+    { "id": "boat_caravel_1", "kind": "caravel", "x": 3145, "y": 576 }
+  ],
+  "spawns": [
+    { "kind": "wolf", "x": 1720, "y": 270, "count": 2 },
+    { "kind": "bear", "x": 1810, "y": 380, "count": 1 },
+    { "kind": "forest_bandit", "x": 2240, "y": 420, "count": 2 },
+    { "kind": "forest_bandit", "x": 2710, "y": 576, "count": 2 },
+    { "kind": "shark", "x": 3660, "y": 830, "count": 2 },
+    { "kind": "pirate_raider", "x": 4100, "y": 310, "count": 3 },
+    { "kind": "sea_dragon", "x": 4360, "y": 840, "count": 1 }
+  ]
+}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blades of Three Seas — Phases 1–6 Complete</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+      body {
+        background: #0d1117;
+        color: #e6edf3;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+      }
+      #game-container { width: 100%; height: 100%; }
+
+      #storm-vignette {
+        position: fixed; inset: 0; pointer-events: none; z-index: 120;
+        box-shadow: inset 0 0 90px 28px rgba(188, 44, 102, 0.65);
+        display: none;
+      }
+
+      #top-left-stack {
+        position: fixed; top: 12px; left: 12px; z-index: 300;
+        display: flex; flex-direction: column; gap: 6px;
+      }
+      #debug-overlay, #daynight-pill, #honor-pill, #castle-pill {
+        background: rgba(13, 17, 23, 0.88);
+        border: 1px solid #30363d; border-radius: 6px;
+        padding: 7px 12px; font-size: 11.5px; line-height: 1.45;
+        min-width: 275px;
+      }
+      .dbg-header { font-weight: 700; color: #f0883e; margin-bottom: 3px; }
+      .dbg-toggle {
+        margin-top: 6px; width: 100%; padding: 5px 8px;
+        background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
+        border-radius: 4px; font-family: inherit; font-size: 11px; cursor: pointer;
+      }
+      .dbg-toggle.active { background: #da3633; border-color: #f85149; color: #fff; font-weight: 700; }
+
+      #follower-roster { display: flex; flex-direction: column; gap: 5px; width: 275px; }
+      .follower-card {
+        background: rgba(13, 17, 23, 0.9); border: 1px solid #30363d;
+        border-radius: 6px; padding: 6px 9px; font-size: 11px;
+      }
+      .fol-top { display: flex; justify-content: space-between; font-weight: 700; }
+      .fol-bars { display: flex; gap: 6px; margin-top: 4px; align-items: center; }
+      .fol-mini-track { flex: 1; height: 6px; background: #21262d; border-radius: 3px; overflow: hidden; }
+      .fol-hp-fill { height: 100%; background: #3fb950; }
+      .fol-hunger-fill { height: 100%; background: #f0883e; }
+      .feed-btn {
+        background: #21262d; border: 1px solid #30363d; color: #ffd166;
+        border-radius: 4px; padding: 2px 6px; font-size: 10px; font-family: inherit; cursor: pointer;
+      }
+
+      #storm-hud {
+        position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+        z-index: 160; display: flex; flex-direction: column; align-items: center; gap: 6px;
+        pointer-events: none;
+      }
+      .storm-pill {
+        background: rgba(13, 17, 23, 0.9); border: 1px solid #8957e5;
+        border-radius: 6px; padding: 7px 16px; font-size: 12px; text-align: center;
+      }
+      .storm-pill strong { color: #d2a8ff; }
+      .storm-alert {
+        background: rgba(218, 54, 51, 0.92); color: #fff;
+        padding: 5px 14px; border-radius: 5px; font-size: 12px; font-weight: 700;
+        display: none;
+      }
+
+      #top-right-panel {
+        position: fixed; top: 12px; right: 12px; z-index: 160;
+        display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+        pointer-events: none;
+      }
+      #minimap-box {
+        background: rgba(13, 17, 23, 0.92); border: 2px solid #30363d;
+        border-radius: 6px; padding: 4px;
+      }
+      #minimap-canvas { display: block; border-radius: 3px; }
+      .minimap-legend { font-size: 10px; color: #8b949e; text-align: center; margin-top: 3px; }
+      #ko-feed { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+      .ko-item {
+        background: rgba(13, 17, 23, 0.85); border-left: 3px solid #f85149;
+        padding: 4px 9px; border-radius: 4px; font-size: 11px;
+      }
+
+      #crafting-panel {
+        position: fixed; bottom: 18px; left: 12px; z-index: 170;
+        background: rgba(13, 17, 23, 0.9); border: 1px solid #30363d;
+        border-radius: 8px; padding: 10px 12px; width: 255px;
+        display: flex; flex-direction: column; gap: 6px;
+      }
+      .craft-title { font-size: 12px; font-weight: 700; color: #ffd166; }
+      .craft-btn {
+        display: flex; flex-direction: column; text-align: left;
+        background: #161b22; border: 1px solid #30363d; border-radius: 5px;
+        padding: 6px 8px; color: #e6edf3; font-family: inherit; cursor: pointer;
+      }
+      .craft-btn.ready { border-color: #2ea043; background: rgba(46, 160, 67, 0.14); }
+      .craft-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+      .craft-btn-top { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; }
+      .craft-btn-sub { font-size: 10px; color: #8b949e; margin-top: 2px; }
+
+      #right-prompts {
+        position: fixed; bottom: 18px; right: 12px; z-index: 170;
+        display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+      }
+      .prompt-pill {
+        background: rgba(13, 17, 23, 0.92); border: 1px solid #ffd166;
+        color: #ffd166; border-radius: 6px; padding: 8px 14px;
+        font-size: 12px; font-weight: 700; display: none;
+      }
+      .prompt-pill.ally { border-color: #4cc9f0; color: #4cc9f0; }
+
+      #combat-hud { position: fixed; inset: 0; pointer-events: none; z-index: 150; }
+      .hud-bottom {
+        position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+        background: rgba(13, 17, 23, 0.9); border: 1px solid #30363d;
+        border-radius: 8px; padding: 10px 16px; min-width: 550px;
+        display: flex; flex-direction: column; gap: 7px; pointer-events: auto;
+      }
+      .bar-row { display: flex; align-items: center; gap: 8px; font-size: 11px; }
+      .bar-label { width: 64px; font-weight: 700; }
+      .bar-track {
+        flex: 1; height: 12px; background: #21262d; border-radius: 4px; overflow: hidden;
+        border: 1px solid #30363d;
+      }
+      .bar-fill-hp { height: 100%; background: #e63946; transition: width 0.08s linear; }
+      .bar-fill-stam { height: 100%; background: #2ea043; transition: width 0.05s linear; }
+      .bar-fill-stam.exhausted { background: #d29922; }
+      .bar-fill-hunger { height: 100%; background: #f0883e; transition: width 0.08s linear; }
+
+      .stance-row { display: flex; justify-content: space-between; gap: 8px; }
+      .stance-pill {
+        flex: 1; text-align: center; padding: 4px 0; border-radius: 4px;
+        border: 1px solid #30363d; background: #161b22; font-size: 11px; font-weight: 700;
+      }
+      .stance-pill.active-high { border-color: #ff6b6b; background: rgba(255,107,107,0.2); color: #ff6b6b; }
+      .stance-pill.active-mid { border-color: #ffd166; background: rgba(255,209,102,0.2); color: #ffd166; }
+      .stance-pill.active-low { border-color: #4cc9f0; background: rgba(76,201,240,0.2); color: #4cc9f0; }
+
+      .inv-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 2px; }
+      .inv-slot {
+        background: #161b22; border: 1px solid #30363d; border-radius: 5px;
+        padding: 5px 6px; min-height: 48px; display: flex; flex-direction: column;
+        justify-content: space-between; cursor: pointer; font-size: 10px;
+      }
+      .inv-slot.color-green { border-color: #3fb950; background: rgba(63, 185, 80, 0.14); }
+      .inv-slot.color-orange { border-color: #f0883e; background: rgba(240, 136, 62, 0.14); }
+      .inv-slot.color-grey { border-color: #8b949e; background: rgba(139, 148, 158, 0.12); }
+      .inv-slot.color-yellow { border-color: #ffd166; background: rgba(255, 209, 102, 0.16); }
+      .inv-slot-key { color: #8b949e; font-size: 9px; display: flex; justify-content: space-between; }
+      .inv-slot-name { font-weight: 700; line-height: 1.2; color: #e6edf3; }
+
+      .controls-hint { font-size: 10px; color: #8b949e; text-align: center; }
+
+      #spectator-banner {
+        position: fixed; top: 82px; left: 50%; transform: translateX(-50%);
+        background: rgba(218, 54, 51, 0.9); color: #fff; padding: 6px 16px;
+        border-radius: 6px; font-weight: 700; font-size: 12px; display: none;
+      }
+
+      #modal-overlay {
+        position: fixed; inset: 0; background: rgba(1, 4, 9, 0.85);
+        display: flex; justify-content: center; align-items: center; z-index: 250;
+      }
+      #modal-overlay.hidden { display: none; }
+      .modal-card {
+        background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+        padding: 22px; width: 480px; display: flex; flex-direction: column; gap: 14px;
+      }
+      .modal-card.wide { width: 820px; max-width: 95vw; }
+      .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .panel-box {
+        background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px;
+      }
+      .panel-heading {
+        font-size: 13px; font-weight: 700; color: #f0883e; margin-bottom: 8px;
+        border-bottom: 1px solid #21262d; padding-bottom: 4px;
+      }
+      table.stats-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+      table.stats-table th { text-align: left; color: #8b949e; padding-bottom: 6px; }
+      table.stats-table td { padding: 5px 0; border-top: 1px solid #21262d; }
+      .rank-1 { color: #ffd166; font-weight: 700; }
+      .xp-gain { color: #3fb950; font-weight: 700; }
+      .modal-title { font-size: 20px; font-weight: 700; color: #ffd166; }
+      .input-group { display: flex; gap: 8px; }
+      input[type="text"] {
+        flex: 1; background: #0d1117; border: 1px solid #30363d; color: #e6edf3;
+        padding: 8px 10px; border-radius: 5px; font-family: inherit;
+      }
+      button.primary {
+        background: #238636; border: 1px solid #2ea043; color: #fff;
+        padding: 8px 14px; border-radius: 5px; font-family: inherit; font-weight: 700; cursor: pointer;
+      }
+      button.secondary {
+        background: #21262d; border: 1px solid #30363d; color: #e6edf3;
+        padding: 8px 14px; border-radius: 5px; font-family: inherit; cursor: pointer;
+      }
+      button:disabled { opacity: 0.45; cursor: not-allowed; }
+      .player-list {
+        background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
+        padding: 10px; max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;
+      }
+      .player-row { display: flex; justify-content: space-between; font-size: 13px; }
+      .badge-ready { color: #3fb950; font-weight: 700; }
+      .badge-wait { color: #8b949e; }
+    </style>
+  </head>
+  <body>
+    <div id="game-container"></div>
+    <div id="storm-vignette"></div>
+
+    <div id="top-left-stack">
+      <div id="debug-overlay"></div>
+      <div id="daynight-pill">Cycle: <strong>DAY</strong></div>
+      <div id="honor-pill">Honor: <strong>50/100</strong> • Coins: <strong>25g</strong> • Truce: <strong>None</strong></div>
+      <div id="castle-pill">Japanese Castle: <strong>0s / 60s</strong></div>
+      <div id="follower-roster"></div>
+    </div>
+
+    <div id="storm-hud">
+      <div id="storm-pill" class="storm-pill">Waiting in Three Seas Lobby...</div>
+      <div id="storm-alert" class="storm-alert">OUTSIDE SAFE ZONE — RETURN TO CENTER!</div>
+    </div>
+
+    <div id="top-right-panel">
+      <div id="minimap-box">
+        <canvas id="minimap-canvas" width="240" height="80"></canvas>
+        <div class="minimap-legend">Asia (Left) | Europe (Center) | Sea (Right)</div>
+      </div>
+      <div id="ko-feed"></div>
+    </div>
+
+    <div id="crafting-panel"></div>
+    <div id="right-prompts">
+      <div id="ally-prompt" class="prompt-pill ally">[H] Propose Truce</div>
+      <div id="interact-prompt" class="prompt-pill">[F] Interact</div>
+    </div>
+
+    <div id="combat-hud">
+      <div id="spectator-banner">K.O. — SPECTATING (Press TAB to switch warrior)</div>
+      <div class="hud-bottom">
+        <div class="bar-row">
+          <span class="bar-label" style="color:#ff6b6b;">HP</span>
+          <div class="bar-track"><div id="hp-bar" class="bar-fill-hp" style="width:100%"></div></div>
+          <span id="hp-text" style="width:55px;text-align:right;">100/100</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="color:#3fb950;">STAMINA</span>
+          <div class="bar-track"><div id="stam-bar" class="bar-fill-stam" style="width:100%"></div></div>
+          <span id="stam-text" style="width:55px;text-align:right;">100/100</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="color:#f0883e;">HUNGER</span>
+          <div class="bar-track"><div id="hunger-bar" class="bar-fill-hunger" style="width:100%"></div></div>
+          <span id="hunger-text" style="width:55px;text-align:right;">100/100</span>
+        </div>
+        <div class="stance-row">
+          <div id="stance-high" class="stance-pill">[1] HIGH</div>
+          <div id="stance-mid" class="stance-pill active-mid">[2] MID</div>
+          <div id="stance-low" class="stance-pill">[3] LOW</div>
+        </div>
+        <div id="inv-row" class="inv-row"></div>
+        <div class="controls-hint">
+          F: Interact/Rescue/NPC | G: Feed | H: Truce | U/Y: Siege Crew/Fire | B/N: Boat Rent/Buy | Z/X/C/V: Craft
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-overlay"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

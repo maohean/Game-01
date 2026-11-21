@@ -1,0 +1,120 @@
+{
+  "items": {
+    "res_wood": {
+      "id": "res_wood",
+      "category": "resource",
+      "color": "grey",
+      "stackable": true,
+      "maxStack": 20,
+      "skins": {
+        "asia": { "name": "Hinoki Timber", "desc": "Fragrant cypress wood for campfires." },
+        "europe": { "name": "Oak Timber", "desc": "Seasoned oak logs for campfires and siege." },
+        "sea": { "name": "Driftwood Planks", "desc": "Salt-cured ship timber." }
+      }
+    },
+    "res_stone": {
+      "id": "res_stone",
+      "category": "resource",
+      "color": "grey",
+      "stackable": true,
+      "maxStack": 20,
+      "skins": {
+        "asia": { "name": "River Cobble", "desc": "Smooth whetstone for blade sharpening." },
+        "europe": { "name": "Granite Block", "desc": "Hard quarried stone for forging." },
+        "sea": { "name": "Coral Stone", "desc": "Dense reef stone." }
+      }
+    },
+    "res_iron": {
+      "id": "res_iron",
+      "category": "resource",
+      "color": "grey",
+      "stackable": true,
+      "maxStack": 15,
+      "skins": {
+        "asia": { "name": "Tamahagane Ore", "desc": "Refined jewel steel for forging katanas." },
+        "europe": { "name": "Cast Iron Ingot", "desc": "Heavy steel ingot for forging longswords." },
+        "sea": { "name": "Salvaged Anchor Iron", "desc": "High-carbon naval iron." }
+      }
+    },
+    "res_bamboo": {
+      "id": "res_bamboo",
+      "category": "resource",
+      "color": "grey",
+      "stackable": true,
+      "maxStack": 20,
+      "skins": {
+        "asia": { "name": "Green Bamboo", "desc": "Flexible stalks for poultices and splints." },
+        "europe": { "name": "Ash Sapling", "desc": "Supple ash wood for remedies." },
+        "sea": { "name": "Kelp Reed", "desc": "Coastal medicinal reed." }
+      }
+    },
+    "heal_small": {
+      "id": "heal_small",
+      "category": "healing",
+      "color": "green",
+      "stackable": true,
+      "maxStack": 5,
+      "healHp": 35,
+      "skins": {
+        "asia": { "name": "Kampo Herb Bundle", "desc": "Restores +35 HP immediately." },
+        "europe": { "name": "Monastery Salve", "desc": "Restores +35 HP immediately." },
+        "sea": { "name": "Sea-Salt Bandage", "desc": "Restores +35 HP immediately." }
+      }
+    },
+    "food_raw": {
+      "id": "food_raw",
+      "category": "food",
+      "color": "orange",
+      "stackable": true,
+      "maxStack": 6,
+      "healHp": 5,
+      "restoreHunger": 25,
+      "skins": {
+        "asia": { "name": "Raw River Trout", "desc": "+25 Hunger. Cook at campfire for +60!" },
+        "europe": { "name": "Raw Venison Cut", "desc": "+25 Hunger. Cook at campfire for +60!" },
+        "sea": { "name": "Raw Sea Bass", "desc": "+25 Hunger. Cook at campfire for +60!" }
+      }
+    },
+    "food_cooked": {
+      "id": "food_cooked",
+      "category": "food",
+      "color": "orange",
+      "stackable": true,
+      "maxStack": 6,
+      "healHp": 20,
+      "restoreHunger": 60,
+      "skins": {
+        "asia": { "name": "Grilled Onigiri & Fish", "desc": "Restores +60 Hunger & +20 HP." },
+        "europe": { "name": "Roasted Venison Feast", "desc": "Restores +60 Hunger & +20 HP." },
+        "sea": { "name": "Smoked Mariner Stew", "desc": "Restores +60 Hunger & +20 HP." }
+      }
+    },
+    "weapon_forged": {
+      "id": "weapon_forged",
+      "category": "weapon",
+      "color": "yellow",
+      "stackable": false,
+      "maxStack": 1,
+      "weaponTier": 2,
+      "bonusDamage": 14,
+      "skins": {
+        "asia": { "name": "Masterwork Katana (+14 DMG)", "desc": "Razor-folded steel blade." },
+        "europe": { "name": "Masterwork Longsword (+14 DMG)", "desc": "Tempered knightly blade." },
+        "sea": { "name": "Corsair Cutlass (+14 DMG)", "desc": "Salt-tempered naval blade." }
+      }
+    },
+    "treasure_relic": {
+      "id": "treasure_relic",
+      "category": "treasure",
+      "color": "yellow",
+      "stackable": true,
+      "maxStack": 5,
+      "bonusXp": 150,
+      "skins": {
+        "asia": { "name": "Imperial Jade Seal", "desc": "Worth +150 XP or 45g at Merchant." },
+        "europe": { "name": "Sovereign Gold Chalice", "desc": "Worth +150 XP or 45g at Merchant." },
+        "sea": { "name": "Abyssal Pearl Crown", "desc": "Worth +150 XP or 45g at Merchant." }
+      }
+    }
+  }
+}

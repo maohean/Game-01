@@ -1,0 +1,27 @@
+{
+  "tilesets": {
+    "asia": {
+      "ground": "#2b303a",
+      "foliage": "#1b4332",
+      "wood": "#5c3d2e",
+      "stone": "#495057",
+      "accent": "#ffd166"
+    },
+    "europe": {
+      "ground": "#2d3b2d",
+      "oakForest": "#1e3f20",
+      "wheatField": "#9c7a3c",
+      "cobblestone": "#525866",
+      "castleStone": "#6c757d",
+      "bridgeWood": "#7f4f24",
+      "moatWater": "#1d4e89"
+    },
+    "sea": {
+      "deepWater": "#0b2545",
+      "shallowShoal": "#134074",
+      "harborDock": "#8d5524",
+      "islandSand": "#c2a878",
+      "shipwreckHull": "#4a3525"
+    }
+  }
+}

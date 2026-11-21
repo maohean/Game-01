@@ -1,0 +1,52 @@
+{
+  "siegeWeapons": {
+    "battering_ram": {
+      "kind": "battering_ram",
+      "name": "Iron-Shod Battering Ram",
+      "minCrew": 2,
+      "maxCrew": 3,
+      "moveSpeed": 125,
+      "range": 74,
+      "structureDamage": 120,
+      "playerDamage": 45,
+      "cooldownMs": 1800,
+      "color": "#a47148"
+    },
+    "ballista": {
+      "kind": "ballista",
+      "name": "Heavy Torsion Ballista",
+      "minCrew": 2,
+      "maxCrew": 2,
+      "moveSpeed": 95,
+      "range": 480,
+      "structureDamage": 95,
+      "playerDamage": 75,
+      "cooldownMs": 2200,
+      "color": "#ffd166"
+    }
+  },
+  "boats": {
+    "rowboat": {
+      "kind": "rowboat",
+      "name": "Harbor Skiff (Rent 15g)",
+      "rentCost": 15,
+      "buyCost": 0,
+      "maxPassengers": 2,
+      "speed": 240,
+      "maxHp": 140,
+      "cannonDamage": 0,
+      "color": "#b08968"
+    },
+    "caravel": {
+      "kind": "caravel",
+      "name": "Armed Caravel (Buy 45g)",
+      "rentCost": 0,
+      "buyCost": 45,
+      "maxPassengers": 4,
+      "speed": 295,
+      "maxHp": 320,
+      "cannonDamage": 55,
+      "color": "#ffd166"
+    }
+  }
+}

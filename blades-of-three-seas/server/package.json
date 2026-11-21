@@ -1,0 +1,25 @@
+{
+  "name": "@bots/server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bots/shared": "*",
+    "@colyseus/core": "^0.15.29",
+    "@colyseus/schema": "^2.0.34",
+    "@colyseus/ws-transport": "^0.15.14",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@types/pg": "^8.11.5",
+    "tsx": "^4.11.0"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "landmarks": [
+    {
+      "id": "lm_mountain_temple",
+      "kind": "mountain_temple",
+      "name": "Mount Kurama Sanctuary (Free Healing)",
+      "x": 576,
+      "y": 192,
+      "radius": 105,
+      "healPerSec": 15
+    },
+    {
+      "id": "lm_angkor_temple",
+      "kind": "angkor_temple",
+      "name": "Angkor Jungle Temple",
+      "x": 1152,
+      "y": 912,
+      "radius": 125,
+      "treasureCoins": 85,
+      "treasureXp": 250
+    },
+    {
+      "id": "lm_japanese_castle",
+      "kind": "japanese_castle",
+      "name": "Himeji-style Tenshu Castle",
+      "x": 1152,
+      "y": 240,
+      "radius": 120,
+      "captureDurationSec": 60,
+      "captureHonorReward": 25,
+      "captureCoinTribute": 40
+    }
+  ],
+  "townNpcs": [
+    {
+      "id": "npc_farmer_1",
+      "role": "farmer",
+      "name": "Daiki (Paddy Farmer)",
+      "x": 260,
+      "y": 890,
+      "serviceLabel": "[F] Collect Fresh Rice (+2 Cooked Meals)",
+      "cooldownSec": 25
+    },
+    {
+      "id": "npc_apothecary_1",
+      "role": "apothecary",
+      "name": "Meilin (Village Apothecary)",
+      "x": 560,
+      "y": 540,
+      "serviceLabel": "[F] Brew Herbal Remedy (8 Coins -> +2 Herbs)",
+      "costCoins": 8
+    },
+    {
+      "id": "npc_blacksmith_1",
+      "role": "blacksmith",
+      "name": "Tetsuo (Master Swordsmith)",
+      "x": 660,
+      "y": 540,
+      "serviceLabel": "[F] Temper Katana (15 Coins -> Tier 2 Blade)",
+      "costCoins": 15
+    },
+    {
+      "id": "npc_merchant_1",
+      "role": "merchant",
+      "name": "Koji (Silk & Relic Merchant)",
+      "x": 610,
+      "y": 630,
+      "serviceLabel": "[F] Trade Relics (+45 Coins) or Buy Rations (6 Coins)",
+      "costCoins": 6
+    },
+    {
+      "id": "npc_guard_1",
+      "role": "guard",
+      "name": "Ashigaru Gate Guard",
+      "x": 510,
+      "y": 580,
+      "serviceLabel": "Village Patrol Guard (Engages Bandits)",
+      "patrolRadius": 120
+    },
+    {
+      "id": "npc_guard_2",
+      "role": "guard",
+      "name": "Ashigaru Shrine Guard",
+      "x": 710,
+      "y": 600,
+      "serviceLabel": "Village Patrol Guard (Engages Bandits)",
+      "patrolRadius": 120
+    }
+  ],
+  "spawns": {
+    "ambushes": [
+      {
+        "id": "ambush_bamboo_north",
+        "name": "Bamboo Grove Ambush",
+        "triggerX": 290,
+        "triggerY": 240,
+        "triggerRadius": 115,
+        "enemyKind": "ambush_bandit",
+        "count": 2
+      }
+    ],
+    "bridgeToll": {
+      "id": "toll_river_bridge",
+      "name": "Three-Plank River Bridge Toll",
+      "x": 768,
+      "y": 576,
+      "tollCoins": 10,
+      "guardKind": "bridge_toll_bandit",
+      "guardCount": 2
+    },
+    "roninCamp": {
+      "id": "camp_ronin_south",
+      "name": "Broken Blade Ronin Camp",
+      "x": 640,
+      "y": 980,
+      "enemyKind": "ronin_outlaw",
+      "count": 2
+    },
+    "tigers": [
+      { "id": "tiger_bamboo_1", "x": 220, "y": 190 },
+      { "id": "tiger_angkor_1", "x": 1040, "y": 1010 }
+    ],
+    "angkorBoss": {
+      "id": "boss_angkor_guardian",
+      "x": 1152,
+      "y": 912
+    },
+    "nightOniBoss": {
+      "id": "boss_night_oni",
+      "x": 1020,
+      "y": 320
+    }
+  }
+}

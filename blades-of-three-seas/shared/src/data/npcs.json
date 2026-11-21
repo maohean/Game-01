@@ -1,0 +1,261 @@
+{
+  "followerRoles": {
+    "fighter": {
+      "role": "fighter",
+      "tag": "FTR",
+      "color": "#ff6b6b",
+      "maxHp": 110,
+      "speed": 205,
+      "damage": 26,
+      "attackRange": 62,
+      "aggroRange": 240,
+      "attackCooldownMs": 950,
+      "perkDesc": "Frontline melee guard (26 DMG)"
+    },
+    "archer": {
+      "role": "archer",
+      "tag": "ARC",
+      "color": "#ffd166",
+      "maxHp": 75,
+      "speed": 200,
+      "damage": 22,
+      "attackRange": 310,
+      "aggroRange": 340,
+      "attackCooldownMs": 1300,
+      "perkDesc": "Ranged volley support (310px range)"
+    },
+    "healer": {
+      "role": "healer",
+      "tag": "HLR",
+      "color": "#3fb950",
+      "maxHp": 80,
+      "speed": 195,
+      "damage": 10,
+      "attackRange": 55,
+      "aggroRange": 160,
+      "attackCooldownMs": 1400,
+      "healAmount": 18,
+      "healRange": 135,
+      "healCooldownMs": 4000,
+      "perkDesc": "Heals injured squadmates (+18 HP/4s)"
+    },
+    "scout": {
+      "role": "scout",
+      "tag": "SCT",
+      "color": "#4cc9f0",
+      "maxHp": 80,
+      "speed": 235,
+      "damage": 16,
+      "attackRange": 60,
+      "aggroRange": 260,
+      "attackCooldownMs": 900,
+      "perkDesc": "Reveals enemies & chests on Minimap"
+    },
+    "blacksmith": {
+      "role": "blacksmith",
+      "tag": "BSM",
+      "color": "#d2a8ff",
+      "maxHp": 95,
+      "speed": 185,
+      "damage": 20,
+      "attackRange": 58,
+      "aggroRange": 200,
+      "attackCooldownMs": 1100,
+      "perkDesc": "Upgrades owner blade & +3 Stam/s"
+    }
+  },
+  "rescueEncounters": [
+    {
+      "type": "villager_beast",
+      "label": "Villager Attacked by Beast",
+      "hostileKind": "wild_boar",
+      "hostileCount": 1,
+      "requiresMedicine": false,
+      "names": {
+        "asia": "Kenji (Rice Farmer)",
+        "europe": "Willem (Miller)",
+        "sea": "Taro (Pearl Diver)"
+      }
+    },
+    {
+      "type": "bandit_prisoner",
+      "label": "Prisoner in Bandit Camp",
+      "hostileKind": "bandit_raider",
+      "hostileCount": 2,
+      "requiresMedicine": false,
+      "names": {
+        "asia": "Hana (Captured Ronin)",
+        "europe": "Aldric (Captured Squire)",
+        "sea": "Marina (Captured Navigator)"
+      }
+    },
+    {
+      "type": "injured_traveler",
+      "label": "Injured Traveler",
+      "hostileKind": null,
+      "hostileCount": 0,
+      "requiresMedicine": true,
+      "names": {
+        "asia": "Sora (Wounded Pilgrim)",
+        "europe": "Elena (Wounded Herbalist)",
+        "sea": "Jonas (Castaway Sailor)"
+      }
+    }
+  ],
+  "hostiles": {
+    "wild_boar": {
+      "kind": "wild_boar",
+      "name": "Frenzied Wild Boar",
+      "maxHp": 75,
+      "speed": 185,
+      "damage": 16,
+      "attackRange": 48,
+      "aggroRange": 220,
+      "attackCooldownMs": 1100,
+      "coinDrop": 10
+    },
+    "bandit_raider": {
+      "kind": "bandit_raider",
+      "name": "Bandit Raider",
+      "maxHp": 85,
+      "speed": 175,
+      "damage": 18,
+      "attackRange": 56,
+      "aggroRange": 235,
+      "attackCooldownMs": 1050,
+      "coinDrop": 14
+    },
+    "ambush_bandit": {
+      "kind": "ambush_bandit",
+      "name": "Bamboo Stalker Bandit",
+      "maxHp": 80,
+      "speed": 195,
+      "damage": 18,
+      "attackRange": 56,
+      "aggroRange": 250,
+      "attackCooldownMs": 1000,
+      "coinDrop": 12
+    },
+    "bridge_toll_bandit": {
+      "kind": "bridge_toll_bandit",
+      "name": "Bridge Toll Enforcer",
+      "maxHp": 105,
+      "speed": 175,
+      "damage": 22,
+      "attackRange": 60,
+      "aggroRange": 165,
+      "attackCooldownMs": 1050,
+      "coinDrop": 18
+    },
+    "ronin_outlaw": {
+      "kind": "ronin_outlaw",
+      "name": "Exiled Ronin",
+      "maxHp": 120,
+      "speed": 190,
+      "damage": 25,
+      "attackRange": 64,
+      "aggroRange": 240,
+      "attackCooldownMs": 950,
+      "coinDrop": 22
+    },
+    "tiger": {
+      "kind": "tiger",
+      "name": "Striped Jungle Tiger",
+      "maxHp": 140,
+      "speed": 235,
+      "damage": 28,
+      "attackRange": 54,
+      "aggroRange": 270,
+      "attackCooldownMs": 900,
+      "coinDrop": 25
+    },
+    "angkor_boss": {
+      "kind": "angkor_boss",
+      "name": "Yama-Naga Temple Guardian (BOSS)",
+      "maxHp": 420,
+      "speed": 165,
+      "damage": 34,
+      "attackRange": 82,
+      "aggroRange": 260,
+      "attackCooldownMs": 1250,
+      "coinDrop": 90
+    },
+    "oni_boss": {
+      "kind": "oni_boss",
+      "name": "Kuro-Oni Night Demon (NIGHT BOSS)",
+      "maxHp": 520,
+      "speed": 205,
+      "damage": 40,
+      "attackRange": 88,
+      "aggroRange": 360,
+      "attackCooldownMs": 1150,
+      "coinDrop": 120
+    },
+    "wolf": {
+      "kind": "wolf",
+      "name": "Timber Wolf",
+      "maxHp": 65,
+      "speed": 215,
+      "damage": 14,
+      "attackRange": 46,
+      "aggroRange": 230,
+      "attackCooldownMs": 950,
+      "coinDrop": 8
+    },
+    "bear": {
+      "kind": "bear",
+      "name": "Grizzly Bear",
+      "maxHp": 135,
+      "speed": 165,
+      "damage": 24,
+      "attackRange": 54,
+      "aggroRange": 210,
+      "attackCooldownMs": 1300,
+      "coinDrop": 18
+    },
+    "forest_bandit": {
+      "kind": "forest_bandit",
+      "name": "Oakwood Brigand",
+      "maxHp": 90,
+      "speed": 180,
+      "damage": 18,
+      "attackRange": 56,
+      "aggroRange": 240,
+      "attackCooldownMs": 1050,
+      "coinDrop": 14
+    },
+    "shark": {
+      "kind": "shark",
+      "name": "Reef Great White",
+      "maxHp": 95,
+      "speed": 225,
+      "damage": 22,
+      "attackRange": 50,
+      "aggroRange": 260,
+      "attackCooldownMs": 1000,
+      "coinDrop": 15
+    },
+    "pirate_raider": {
+      "kind": "pirate_raider",
+      "name": "Corsair Cutthroat",
+      "maxHp": 100,
+      "speed": 185,
+      "damage": 20,
+      "attackRange": 58,
+      "aggroRange": 250,
+      "attackCooldownMs": 1000,
+      "coinDrop": 20
+    },
+    "sea_dragon": {
+      "kind": "sea_dragon",
+      "name": "Leviathan Sea Dragon (BOSS)",
+      "maxHp": 450,
+      "speed": 175,
+      "damage": 34,
+      "attackRange": 92,
+      "aggroRange": 340,
+      "attackCooldownMs": 1400,
+      "coinDrop": 100
+    }
+  }
+}
